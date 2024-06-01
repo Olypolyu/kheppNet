@@ -49,10 +49,8 @@ body {
     gap: 0.25rem;
 }
 
-.column {flex-direction: column;}
-.row {flex-direction: row;}
-
 .box {
+    min-width: 70vw;
     align-items: center;
     border-radius: 16px;
     box-shadow: 0 0 15px hsla(0deg, 0%, 0%, 0.5);
@@ -72,6 +70,7 @@ body {
 }
 
 .neumorphic {
+    min-width: auto;
     padding: 0.40rem;
     box-shadow:  12px 12px 24px #35293a,
                 -12px -12px 24px #58586e;

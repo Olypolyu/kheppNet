@@ -12,7 +12,7 @@
         <div class="header" id="header">
             <h1 style="text-align: left; margin-left: 40px;">Khep's little web-corner</h1>
 
-            <div class="container row" style="justify-content: right;">
+            <div class="container" style="justify-content: right; flex-direction: row;">
                 <div class="box neumorphic" id="button1">
                     <p>coolmathgames.com</p>
                 </div>
@@ -23,41 +23,50 @@
             </div>
         </div>
 
-        <div class="container column">
-            <div class="box">
-                <h1 style="font-weight: 900;"> Top ten reasons i should be given a coke RIGHT NOW</h1> 
+        <div class="container" style="flex-direction: column;">
+            <div class="box" style="padding: 2rem;">
+                
+                <h1 style="font-weight: 900;"> A little graph!</h1> 
                 <hr style="text-align: center; width:50%;">
-                <p>
-                    Kheprep might have a soda addiction, however, since he gets a little grumpy everytime he is not given a coke, we do not care. 
-                    The following list represents what kind of soda to feed the Khep in order to keep your ankles unbroken!
-                </p>
-                <h3>Fanta</h3>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-            </div>
 
-            <div class="box">
-                <h1 style="font-weight: 900;"> Top ten reasons i should be given a coke RIGHT NOW</h1> 
-                <hr style="text-align: center; width:50%;">
-                <p>
-                    Kheprep might have a soda addiction, however, since he gets a little grumpy everytime he is not given a coke, we do not care. 
-                    The following list represents what kind of soda to feed the Khep in order to keep your ankles unbroken!
-                </p>
-                <h3>Fanta</h3>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
+                <div class="container" style="flex-direction: row;">
+                    <canvas id="Canba" width="300" height="300"></canvas>
+                    <button id="Generate">Generate!</button>
+                </div>
+                <script>
+
+                    function getRandomInt(max) {
+                        return Math.floor(Math.random() * max);
+                    }
+
+                    const button = document.getElementById("Generate");
+                    const canvas = document.getElementById("Canba").getContext("2d");
+                    canvas.width = document.getElementById("Canba").getBoundingClientRect().width
+                    canvas.height = document.getElementById("Canba").getBoundingClientRect().height
+                    canvas.lineWidth = 3;
+
+                    let y = 0;
+                    button.onclick = () => {
+                        canvas.clearRect(0, 0, canvas.width, canvas.height);
+                        for (let x = 0; x < canvas.width; x++) {
+                            
+                            canvas.beginPath();
+                            canvas.moveTo(x, 300 - y);
+
+                            if ( (getRandomInt(3) === 0 && y < canvas.height) || y < (canvas.height * 0.10)) {
+                                y += getRandomInt(24);
+                                canvas.strokeStyle = "green";
+                            } else {
+                                y -= getRandomInt(16);
+                                canvas.strokeStyle = "red";
+                            }
+
+                            canvas.lineTo(x, 300 - y);
+                            canvas.stroke();
+                            console.log(y)
+                        }
+                    }
+                </script>
             </div>
             
             <div class="box">
@@ -69,16 +78,9 @@
                 </p>
                 <h3>Fanta</h3>
                 <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
-                <p>it gud</p>
             </div>
         </div>
-        
+
         <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>
